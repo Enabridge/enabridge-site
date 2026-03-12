@@ -1,8 +1,12 @@
+import type { Metadata } from "next";
 import PageHero from "@/components/PageHero";
 import CTABanner from "@/components/CTABanner";
 import { agenticMaturity } from "@/data/content";
 
-export const metadata = { title: "Agentic AI | Enabridge" };
+export const metadata: Metadata = {
+  title: "Agentic AI",
+  description: "Agentic AI goes beyond chatbots and copilots — AI that takes actions, makes decisions within guardrails, and runs multi-step workflows across your systems.",
+};
 
 export default function AgenticAIPage() {
   return (
@@ -14,19 +18,20 @@ export default function AgenticAIPage() {
       />
 
       <section className="border-b border-border">
-        <div className="mx-auto max-w-7xl px-6 py-20 lg:px-12">
-          <h2 className="text-3xl font-semibold tracking-tight text-text-primary sm:text-4xl">
+        <div className="mx-auto max-w-7xl px-6 py-24 lg:px-12 lg:py-28">
+          <p className="text-xs font-medium tracking-[0.25em] text-premium uppercase">Maturity model</p>
+          <h2 className="mt-4 text-3xl font-semibold tracking-tight text-text-primary sm:text-4xl">
             A staged approach to autonomy
           </h2>
-          <p className="mt-4 max-w-2xl text-text-muted leading-relaxed">
+          <p className="mt-5 max-w-2xl text-text-muted leading-relaxed">
             We don&apos;t flip a switch and hand over control. Instead, we introduce agents at the right level of
             autonomy for your team&apos;s comfort and your business&apos;s risk tolerance.
           </p>
-          <div className="mt-14 space-y-8">
+          <div className="mt-14 space-y-0">
             {agenticMaturity.map((item, i) => (
-              <div key={item.stage} className="grid gap-6 md:grid-cols-[200px_1fr] items-start">
+              <div key={item.stage} className="grid gap-6 md:grid-cols-[200px_1fr] items-start border-b border-border py-10 first:pt-0 last:border-0 last:pb-0">
                 <div>
-                  <span className="text-xs font-medium text-premium">Stage {i + 1}</span>
+                  <span className="text-xs font-medium tracking-wide text-premium">Stage {i + 1}</span>
                   <h3 className="mt-1 text-xl font-semibold text-accent">{item.stage}</h3>
                 </div>
                 <p className="text-text-muted leading-relaxed">{item.description}</p>
@@ -37,11 +42,12 @@ export default function AgenticAIPage() {
       </section>
 
       <section className="border-b border-border bg-bg-surface">
-        <div className="mx-auto max-w-7xl px-6 py-20 lg:px-12">
-          <h2 className="text-3xl font-semibold tracking-tight text-text-primary sm:text-4xl">
+        <div className="mx-auto max-w-7xl px-6 py-24 lg:px-12 lg:py-28">
+          <p className="text-xs font-medium tracking-[0.25em] text-premium uppercase">Capabilities</p>
+          <h2 className="mt-4 text-3xl font-semibold tracking-tight text-text-primary sm:text-4xl">
             What makes Agentic AI different
           </h2>
-          <div className="mt-14 grid gap-8 md:grid-cols-2">
+          <div className="mt-14 grid gap-6 md:grid-cols-2">
             {[
               {
                 title: "Multi-step execution",

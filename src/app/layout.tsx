@@ -15,9 +15,18 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Agentic AI for Business | Enabridge",
+  title: {
+    default: "Enabridge — Agentic AI for Business",
+    template: "%s | Enabridge",
+  },
   description:
-    "Accelerate your business safely with Agentic AI. Enabridge builds AI agents that improve execution with human oversight and production-grade reliability.",
+    "Enabridge designs and deploys Agentic AI that accelerates business execution — with human oversight, audit trails, and production-grade reliability.",
+  metadataBase: new URL("https://enabridge.ai"),
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    siteName: "Enabridge",
+  },
 };
 
 export default function RootLayout({

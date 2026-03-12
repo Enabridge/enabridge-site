@@ -8,9 +8,9 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <nav className="border-b border-border bg-bg-primary/80 backdrop-blur-md sticky top-0 z-50">
+    <nav className="border-b border-border/80 bg-bg-primary/85 backdrop-blur-lg sticky top-0 z-50">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-12">
-        <Link href="/" className="text-sm font-semibold tracking-[0.18em] text-accent uppercase">
+        <Link href="/" className="text-sm font-semibold tracking-[0.2em] text-accent uppercase">
           Enabridge
         </Link>
 
@@ -20,7 +20,7 @@ export default function Navbar() {
             <Link
               key={link.href}
               href={link.href}
-              className="text-sm text-text-muted transition hover:text-accent"
+              className="text-[13px] font-medium text-text-muted transition hover:text-accent"
             >
               {link.label}
             </Link>
@@ -30,7 +30,7 @@ export default function Navbar() {
         <div className="hidden lg:block">
           <Link
             href={ctaLink.href}
-            className="inline-flex items-center justify-center rounded-full bg-primary px-5 py-2.5 text-sm font-medium text-accent transition hover:bg-cta-hover"
+            className="inline-flex items-center justify-center rounded-full bg-primary px-6 py-2.5 text-[13px] font-semibold text-accent transition hover:bg-cta-hover"
           >
             {ctaLink.label}
           </Link>
@@ -54,7 +54,7 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {open && (
-        <div className="lg:hidden border-t border-border bg-bg-primary px-6 pb-6">
+        <div className="lg:hidden border-t border-border bg-bg-primary px-6 pb-6 pt-2">
           {navLinks.map((link) => (
             <Link
               key={link.href}
@@ -68,7 +68,7 @@ export default function Navbar() {
           <Link
             href={ctaLink.href}
             onClick={() => setOpen(false)}
-            className="mt-4 inline-flex items-center justify-center rounded-full bg-primary px-5 py-2.5 text-sm font-medium text-accent transition hover:bg-cta-hover"
+            className="mt-4 inline-flex w-full items-center justify-center rounded-full bg-primary px-5 py-3 text-sm font-semibold text-accent transition hover:bg-cta-hover"
           >
             {ctaLink.label}
           </Link>

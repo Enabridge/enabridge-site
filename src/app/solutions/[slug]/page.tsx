@@ -8,10 +8,12 @@ export function generateStaticParams() {
 }
 
 export function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
-  // We need to resolve synchronously for static params, so use a workaround
   return params.then(({ slug }) => {
     const solution = solutions.find((s) => s.slug === slug);
-    return { title: solution ? `${solution.title} | Enabridge` : "Solution | Enabridge" };
+    return {
+      title: solution ? solution.title : "Solution",
+      description: solution ? solution.tagline : undefined,
+    };
   });
 }
 
@@ -25,8 +27,9 @@ export default async function SolutionPage({ params }: { params: Promise<{ slug:
       <PageHero label="Solution" title={solution.title} description={solution.tagline} />
 
       <section className="border-b border-border">
-        <div className="mx-auto max-w-7xl px-6 py-20 lg:px-12">
-          <h2 className="text-2xl font-semibold tracking-tight text-text-primary">
+        <div className="mx-auto max-w-7xl px-6 py-24 lg:px-12 lg:py-28">
+          <p className="text-xs font-medium tracking-[0.25em] text-premium uppercase">Use cases</p>
+          <h2 className="mt-3 text-2xl font-semibold tracking-tight text-text-primary">
             What agents handle
           </h2>
           <div className="mt-10 grid gap-6 sm:grid-cols-2">
