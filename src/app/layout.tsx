@@ -27,6 +27,9 @@ export const metadata: Metadata = {
     locale: "en_US",
     siteName: "Enabridge",
   },
+  icons: {
+    icon: "/brand-mark.svg",
+  },
 };
 
 export default function RootLayout({

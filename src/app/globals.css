@@ -1,18 +1,20 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-bg-primary: #061A14;
-  --color-bg-surface: #0B2B22;
-  --color-bg-elevated: #0E3328;
-  --color-primary: #0F5B44;
-  --color-accent: #A7F3D0;
-  --color-premium: #C8A96A;
-  --color-text-primary: #EAF2EE;
-  --color-text-secondary: #D0DDD7;
-  --color-text-muted: #B8C7C0;
-  --color-border: #12382D;
-  --color-border-subtle: #0E2E24;
-  --color-cta-hover: #146C54;
+  --color-bg-primary: #11111b;
+  --color-bg-surface: #1e1e2e;
+  --color-bg-elevated: #26263a;
+  --color-primary: #8caaee;
+  --color-accent: #b4befe;
+  --color-premium: #f2cdcd;
+  --color-logo-mark: #94e2d5;
+  --color-logo-text: #f5e0dc;
+  --color-text-primary: #f5f7fb;
+  --color-text-secondary: #cdd6f4;
+  --color-text-muted: #a6adc8;
+  --color-border: #313244;
+  --color-border-subtle: #24273a;
+  --color-cta-hover: #74c7ec;
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
@@ -27,7 +29,10 @@ html {
 
 body {
   margin: 0;
-  background: var(--color-bg-primary);
+  background:
+    radial-gradient(circle at top, rgba(180, 190, 254, 0.12), transparent 0 30%),
+    radial-gradient(circle at right top, rgba(148, 226, 213, 0.1), transparent 0 24%),
+    var(--color-bg-primary);
   color: var(--color-text-primary);
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
 }
@@ -39,5 +44,5 @@ a {
 
 ::selection {
   background: var(--color-primary);
-  color: var(--color-accent);
+  color: var(--color-bg-primary);
 }
