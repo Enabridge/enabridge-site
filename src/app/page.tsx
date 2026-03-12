@@ -1,172 +1,182 @@
-const capabilities = [
-  {
-    title: "Fast SME onboarding",
-    description:
-      "Turn business context, SOPs, and team workflows into usable agent setups without a long implementation cycle.",
-  },
-  {
-    title: "Stable by default",
-    description:
-      "Workflow-first design, clear boundaries, and observable execution instead of fragile magic demos.",
-  },
-  {
-    title: "Security-aware foundations",
-    description:
-      "Permissioned tools, auditability, and practical controls for businesses that need trust before autonomy.",
-  },
-];
-
-const principles = [
-  "Built for SMEs, not only companies with large platform teams.",
-  "Designed around reliability, maintainability, and predictable operations.",
-  "Focused on practical AI agents that help teams work, not hype-heavy automation theatre.",
-];
+import Link from "next/link";
+import {
+  trustChips,
+  agenticMaturity,
+  deliveryPhases,
+  whyEnabridge,
+  caseStudies,
+  trustGovernance,
+} from "@/data/content";
+import CTABanner from "@/components/CTABanner";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-white text-zinc-950">
-      <section className="border-b border-zinc-200">
-        <div className="mx-auto flex max-w-6xl flex-col gap-16 px-6 py-8 sm:px-10 lg:px-12">
-          <header className="flex items-center justify-between">
-            <div>
-              <p className="text-sm font-medium tracking-[0.18em] text-zinc-500 uppercase">
-                Enabridge
-              </p>
-            </div>
-            <a
-              href="mailto:hello@enabridge.ai"
-              className="text-sm font-medium text-zinc-600 transition hover:text-zinc-950"
+    <>
+      {/* Hero */}
+      <section className="border-b border-border bg-bg-primary">
+        <div className="mx-auto max-w-7xl px-6 py-24 lg:px-12 lg:py-36">
+          <p className="text-xs font-medium tracking-[0.2em] text-premium uppercase">
+            Agentic AI for Business
+          </p>
+          <h1 className="mt-6 max-w-4xl text-4xl font-semibold tracking-tight text-text-primary sm:text-5xl lg:text-6xl">
+            Agentic AI that accelerates execution — without increasing operational risk.
+          </h1>
+          <p className="mt-8 max-w-2xl text-lg leading-relaxed text-text-muted">
+            We design and integrate AI agents that run real workflows across your systems. Our focus
+            is measurable business impact with human oversight and production-grade engineering.
+          </p>
+          <div className="mt-10 flex flex-col gap-4 sm:flex-row">
+            <Link
+              href="/contact"
+              className="inline-flex items-center justify-center rounded-full bg-primary px-7 py-3.5 text-sm font-medium text-accent transition hover:bg-cta-hover"
             >
-              Contact
-            </a>
-          </header>
-
-          <div className="grid gap-12 lg:grid-cols-[minmax(0,1.2fr)_minmax(320px,0.8fr)] lg:items-end">
-            <div className="max-w-3xl">
-              <p className="mb-5 text-sm font-medium tracking-[0.18em] text-zinc-500 uppercase">
-                AI agent platform onboarding for SMEs
-              </p>
-              <h1 className="text-5xl font-semibold tracking-tight text-zinc-950 sm:text-6xl">
-                Help every SME get an AI agent team without enterprise-level friction.
-              </h1>
-              <p className="mt-6 max-w-2xl text-lg leading-8 text-zinc-600 sm:text-xl">
-                Enabridge gives companies a practical path from interest to implementation —
-                onboarding AI agents with clear workflows, stable foundations, and security-aware
-                operations from day one.
-              </p>
-              <div className="mt-10 flex flex-col gap-3 sm:flex-row">
-                <a
-                  href="mailto:hello@enabridge.ai?subject=Enabridge%20demo"
-                  className="inline-flex items-center justify-center rounded-full bg-zinc-950 px-6 py-3 text-sm font-medium text-white transition hover:bg-zinc-800"
-                >
-                  Request a demo
-                </a>
-                <a
-                  href="#approach"
-                  className="inline-flex items-center justify-center rounded-full border border-zinc-300 px-6 py-3 text-sm font-medium text-zinc-700 transition hover:border-zinc-950 hover:text-zinc-950"
-                >
-                  See the approach
-                </a>
-              </div>
-            </div>
-
-            <div className="rounded-3xl border border-zinc-200 bg-zinc-50 p-6 sm:p-8">
-              <p className="text-sm font-medium text-zinc-500">What Enabridge optimizes for</p>
-              <ul className="mt-6 space-y-4 text-sm leading-7 text-zinc-700 sm:text-base">
-                <li>• Faster onboarding from business process to working agent flow</li>
-                <li>• Lower operational overhead for smaller teams</li>
-                <li>• Stronger trust through guardrails, visibility, and clear controls</li>
-              </ul>
-            </div>
+              Book a 30-minute Agentic Fit Call
+            </Link>
+            <Link
+              href="/case-studies"
+              className="inline-flex items-center justify-center rounded-full border border-border px-7 py-3.5 text-sm font-medium text-text-muted transition hover:border-accent hover:text-accent"
+            >
+              See our proven deliveries
+            </Link>
+          </div>
+          <div className="mt-14 flex flex-wrap gap-3">
+            {trustChips.map((chip) => (
+              <span
+                key={chip}
+                className="rounded-full border border-border bg-bg-surface px-4 py-2 text-xs font-medium text-text-muted"
+              >
+                {chip}
+              </span>
+            ))}
           </div>
         </div>
       </section>
 
-      <section id="approach" className="mx-auto max-w-6xl px-6 py-20 sm:px-10 lg:px-12">
-        <div className="grid gap-10 lg:grid-cols-[0.8fr_minmax(0,1.2fr)]">
-          <div>
-            <p className="text-sm font-medium tracking-[0.18em] text-zinc-500 uppercase">
-              Why this approach
-            </p>
-            <h2 className="mt-4 text-3xl font-semibold tracking-tight text-zinc-950 sm:text-4xl">
-              Minimal surface. Serious engineering.
-            </h2>
-          </div>
-          <div className="space-y-6 text-base leading-8 text-zinc-600 sm:text-lg">
-            <p>
-              Most companies do not need more AI hype. They need a straightforward way to deploy
-              useful agents that fit their business processes, stay understandable, and do not turn
-              into an operational burden.
-            </p>
-            <p>
-              Enabridge is aimed at that middle ground: practical agent systems with enough control
-              to be trusted and enough flexibility to create real business leverage.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section className="border-y border-zinc-200 bg-zinc-50">
-        <div className="mx-auto max-w-6xl px-6 py-20 sm:px-10 lg:px-12">
-          <div className="grid gap-6 md:grid-cols-3">
-            {capabilities.map((item) => (
-              <div key={item.title} className="rounded-3xl border border-zinc-200 bg-white p-6">
-                <h3 className="text-xl font-semibold tracking-tight text-zinc-950">{item.title}</h3>
-                <p className="mt-4 text-sm leading-7 text-zinc-600 sm:text-base">
-                  {item.description}
-                </p>
+      {/* Agentic AI maturity */}
+      <section className="border-b border-border bg-bg-surface">
+        <div className="mx-auto max-w-7xl px-6 py-20 lg:px-12">
+          <p className="text-xs font-medium tracking-[0.2em] text-premium uppercase">
+            What we mean by Agentic AI
+          </p>
+          <h2 className="mt-4 max-w-2xl text-3xl font-semibold tracking-tight text-text-primary sm:text-4xl">
+            Staged maturity — not a switch you flip overnight.
+          </h2>
+          <div className="mt-14 grid gap-8 md:grid-cols-3">
+            {agenticMaturity.map((item, i) => (
+              <div key={item.stage} className="rounded-xl border border-border bg-bg-primary p-8">
+                <span className="text-xs font-medium text-premium">Stage {i + 1}</span>
+                <h3 className="mt-3 text-xl font-semibold text-accent">{item.stage}</h3>
+                <p className="mt-4 text-sm leading-relaxed text-text-muted">{item.description}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-6 py-20 sm:px-10 lg:px-12">
-        <div className="grid gap-12 lg:grid-cols-2">
-          <div>
-            <p className="text-sm font-medium tracking-[0.18em] text-zinc-500 uppercase">
-              Platform principles
-            </p>
-            <h2 className="mt-4 text-3xl font-semibold tracking-tight text-zinc-950 sm:text-4xl">
-              Built for real adoption, not just impressive demos.
-            </h2>
-          </div>
-          <div>
-            <ul className="space-y-5 text-base leading-8 text-zinc-600 sm:text-lg">
-              {principles.map((item) => (
-                <li key={item} className="border-b border-zinc-200 pb-5">
-                  {item}
-                </li>
-              ))}
-            </ul>
+      {/* Productized delivery */}
+      <section className="border-b border-border">
+        <div className="mx-auto max-w-7xl px-6 py-20 lg:px-12">
+          <p className="text-xs font-medium tracking-[0.2em] text-premium uppercase">
+            Productized delivery
+          </p>
+          <h2 className="mt-4 max-w-2xl text-3xl font-semibold tracking-tight text-text-primary sm:text-4xl">
+            From opportunity scan to production in weeks — not months.
+          </h2>
+          <div className="mt-14 grid gap-8 md:grid-cols-3">
+            {deliveryPhases.map((phase) => (
+              <div key={phase.title} className="rounded-xl border border-border bg-bg-surface p-8">
+                <span className="text-xs font-medium text-premium">{phase.timeline}</span>
+                <h3 className="mt-3 text-lg font-semibold text-text-primary">{phase.title}</h3>
+                <ul className="mt-5 space-y-2.5">
+                  {phase.items.map((item) => (
+                    <li key={item} className="flex items-start gap-2 text-sm text-text-muted">
+                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      <section className="border-t border-zinc-200">
-        <div className="mx-auto max-w-6xl px-6 py-20 sm:px-10 lg:px-12">
-          <div className="rounded-[2rem] bg-zinc-950 px-8 py-12 text-white sm:px-12 sm:py-16">
-            <p className="text-sm font-medium tracking-[0.18em] text-zinc-400 uppercase">
-              Next step
-            </p>
-            <h2 className="mt-4 max-w-2xl text-3xl font-semibold tracking-tight sm:text-4xl">
-              If you want AI agents in your business, start with a platform designed to be usable.
-            </h2>
-            <p className="mt-5 max-w-2xl text-base leading-8 text-zinc-300 sm:text-lg">
-              Enabridge helps SMEs onboard AI agent capabilities with a practical architecture that
-              can evolve over time instead of collapsing under complexity.
-            </p>
-            <div className="mt-8">
-              <a
-                href="mailto:hello@enabridge.ai?subject=Talk%20to%20Enabridge"
-                className="inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-sm font-medium text-zinc-950 transition hover:bg-zinc-200"
-              >
-                Talk to Enabridge
-              </a>
-            </div>
+      {/* Why Enabridge */}
+      <section className="border-b border-border bg-bg-surface">
+        <div className="mx-auto max-w-7xl px-6 py-20 lg:px-12">
+          <p className="text-xs font-medium tracking-[0.2em] text-premium uppercase">
+            Why Enabridge
+          </p>
+          <h2 className="mt-4 max-w-2xl text-3xl font-semibold tracking-tight text-text-primary sm:text-4xl">
+            Business outcomes first. Technology second.
+          </h2>
+          <div className="mt-14 grid gap-6 sm:grid-cols-2">
+            {whyEnabridge.map((item) => (
+              <div key={item.title} className="rounded-xl border border-border bg-bg-primary p-8">
+                <h3 className="text-lg font-semibold text-text-primary">{item.title}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-text-muted">{item.description}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
-    </main>
+
+      {/* Proof */}
+      <section className="border-b border-border">
+        <div className="mx-auto max-w-7xl px-6 py-20 lg:px-12">
+          <p className="text-xs font-medium tracking-[0.2em] text-premium uppercase">
+            Proven delivery
+          </p>
+          <h2 className="mt-4 max-w-2xl text-3xl font-semibold tracking-tight text-text-primary sm:text-4xl">
+            Real systems, shipped and running in production.
+          </h2>
+          <div className="mt-14 grid gap-8 md:grid-cols-3">
+            {caseStudies.map((cs) => (
+              <Link
+                key={cs.slug}
+                href={`/case-studies/${cs.slug}`}
+                className="group rounded-xl border border-border bg-bg-surface p-8 transition hover:border-accent/40"
+              >
+                <h3 className="text-lg font-semibold text-text-primary group-hover:text-accent transition">
+                  {cs.title}
+                </h3>
+                <p className="mt-2 text-sm text-text-muted">{cs.tagline}</p>
+                <div className="mt-6 flex flex-wrap gap-3">
+                  {cs.stats.map((stat) => (
+                    <div key={stat.label} className="rounded-lg bg-bg-primary px-3 py-2">
+                      <p className="text-sm font-semibold text-accent">{stat.value}</p>
+                      <p className="text-xs text-text-muted">{stat.label}</p>
+                    </div>
+                  ))}
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Trust & Governance */}
+      <section className="border-b border-border bg-bg-surface">
+        <div className="mx-auto max-w-7xl px-6 py-20 lg:px-12">
+          <p className="text-xs font-medium tracking-[0.2em] text-premium uppercase">
+            Trust & Governance
+          </p>
+          <h2 className="mt-4 max-w-2xl text-3xl font-semibold tracking-tight text-text-primary sm:text-4xl">
+            Safety is not a feature — it is the architecture.
+          </h2>
+          <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {trustGovernance.map((item) => (
+              <div key={item.title} className="rounded-xl border border-border bg-bg-primary p-6">
+                <h3 className="text-base font-semibold text-accent">{item.title}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-text-muted">{item.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Final CTA */}
+      <CTABanner />
+    </>
   );
 }
