@@ -1,53 +1,80 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import PageHero from "@/components/PageHero";
 import CTABanner from "@/components/CTABanner";
+import { contactInfo, siteUrl } from "@/data/content";
+import { getDictionary, getLocale } from "@/i18n";
 
-export const metadata: Metadata = {
-  title: "Company",
-  description: "Enabridge bridges the gap between AI capability and business readiness. We focus on practical, production-grade Agentic AI.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const dict = getDictionary(await getLocale());
+  return {
+    title: dict.metadata.company.title,
+    description: dict.metadata.company.description,
+  };
+}
 
-export default function CompanyPage() {
+export default async function CompanyPage() {
+  const dict = getDictionary(await getLocale());
+
+  const personSchema = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: dict.company.founder.name,
+    jobTitle: dict.company.founder.role,
+    image: `${siteUrl}/founder.jpeg`,
+    worksFor: {
+      "@type": "Organization",
+      name: "Enabridge",
+      url: siteUrl,
+    },
+    url: contactInfo.linkedin.founder,
+    sameAs: [contactInfo.linkedin.founder],
+  };
+
   return (
     <>
-      <PageHero
-        label="Company"
-        title="We build AI agents that businesses can actually trust."
-        description="Enabridge was founded to bridge the gap between AI capability and business readiness. We focus on practical, production-grade Agentic AI."
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
       />
 
+      <PageHero
+        label={dict.company.hero.label}
+        title={dict.company.hero.title}
+        description={dict.company.hero.description}
+      />
+
+      {/* Mission + Principles */}
       <section className="border-b border-border">
         <div className="mx-auto max-w-7xl px-6 py-24 lg:px-12 lg:py-28">
           <div className="grid gap-16 lg:grid-cols-2">
             <div>
-              <p className="text-xs font-medium tracking-[0.25em] text-premium uppercase">Our mission</p>
+              <p className="text-xs font-medium tracking-[0.25em] text-premium uppercase">
+                {dict.company.mission.label}
+              </p>
               <h2 className="mt-4 text-3xl font-semibold tracking-tight text-text-primary sm:text-4xl">
-                Close the gap between AI hype and production reality
+                {dict.company.mission.title}
               </h2>
               <p className="mt-6 text-text-muted leading-relaxed">
-                We believe AI should accelerate business execution without creating new risks. Too many
-                companies are stuck between the hype of AI demos and the reality of deploying agents in
-                production environments where mistakes have real consequences.
+                {dict.company.mission.body1}
               </p>
               <p className="mt-4 text-text-muted leading-relaxed">
-                Enabridge exists to close that gap. We design and integrate Agentic AI that is
-                observable, controllable, and aligned with your business processes from day one.
+                {dict.company.mission.body2}
               </p>
             </div>
             <div>
-              <p className="text-xs font-medium tracking-[0.25em] text-premium uppercase">Principles</p>
+              <p className="text-xs font-medium tracking-[0.25em] text-premium uppercase">
+                {dict.company.principles.label}
+              </p>
               <h2 className="mt-4 text-3xl font-semibold tracking-tight text-text-primary sm:text-4xl">
-                What we stand for
+                {dict.company.principles.title}
               </h2>
               <ul className="mt-8 space-y-5">
-                {[
-                  "Business outcomes over technology showcases",
-                  "Human oversight as a design principle, not a constraint",
-                  "Incremental delivery that builds trust over time",
-                  "Production-grade engineering from the first sprint",
-                  "Transparency in how agents think and act",
-                ].map((item) => (
-                  <li key={item} className="flex items-start gap-3 text-text-muted leading-relaxed">
+                {dict.company.principles.items.map((item) => (
+                  <li
+                    key={item}
+                    className="flex items-start gap-3 text-text-muted leading-relaxed"
+                  >
                     <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
                     {item}
                   </li>
@@ -58,28 +85,136 @@ export default function CompanyPage() {
         </div>
       </section>
 
+      {/* Founder */}
       <section className="border-b border-border bg-bg-surface">
         <div className="mx-auto max-w-7xl px-6 py-24 lg:px-12 lg:py-28">
-          <p className="text-xs font-medium tracking-[0.25em] text-premium uppercase">Capabilities</p>
+          <p className="text-xs font-medium tracking-[0.25em] text-premium uppercase">
+            {dict.company.founder.label}
+          </p>
+          <div className="mt-8 grid gap-12 lg:grid-cols-[320px_1fr] lg:gap-16">
+            <div>
+              <div className="overflow-hidden rounded-2xl border border-border bg-bg-primary">
+                <Image
+                  src="/founder.jpeg"
+                  alt={dict.company.founder.photoAlt}
+                  width={640}
+                  height={640}
+                  priority
+                  className="h-auto w-full object-cover"
+                />
+              </div>
+              <h2 className="mt-6 text-2xl font-semibold tracking-tight text-text-primary">
+                {dict.company.founder.name}
+              </h2>
+              <p className="mt-1 text-sm text-text-muted">
+                {dict.company.founder.role}
+              </p>
+              <a
+                href={contactInfo.linkedin.founder}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-4 inline-flex items-center gap-2 text-sm text-text-muted transition hover:text-accent"
+              >
+                <span>{dict.company.founder.linkedinLabel}</span>
+                <span aria-hidden="true">→</span>
+              </a>
+            </div>
+            <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-1 lg:gap-10">
+              <div>
+                <h3 className="text-lg font-semibold text-accent">
+                  {dict.company.founder.experienceHeading}
+                </h3>
+                <ul className="mt-5 space-y-3">
+                  {dict.company.founder.experience.map((h) => (
+                    <li
+                      key={h}
+                      className="flex items-start gap-2.5 text-sm leading-relaxed text-text-muted"
+                    >
+                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
+                      {h}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold text-accent">
+                  {dict.company.founder.industryHeading}
+                </h3>
+                <ul className="mt-5 space-y-3">
+                  {dict.company.founder.industries.map((ind) => (
+                    <li
+                      key={ind}
+                      className="flex items-start gap-2.5 text-sm leading-relaxed text-text-muted"
+                    >
+                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
+                      {ind}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Capabilities */}
+      <section className="border-b border-border">
+        <div className="mx-auto max-w-7xl px-6 py-24 lg:px-12 lg:py-28">
+          <p className="text-xs font-medium tracking-[0.25em] text-premium uppercase">
+            {dict.company.capabilities.label}
+          </p>
           <h2 className="mt-4 text-3xl font-semibold tracking-tight text-text-primary sm:text-4xl">
-            Our expertise
+            {dict.company.capabilities.title}
           </h2>
           <div className="mt-12 grid gap-6 md:grid-cols-3">
-            {[
-              { title: "Agentic AI & LLM Systems", body: "Design and integration of AI agents with tool use, multi-step reasoning, and human-in-the-loop workflows." },
-              { title: "Full-Stack Engineering", body: "End-to-end delivery from mobile apps and web platforms to backend APIs and infrastructure." },
-              { title: "Compliance & FinTech", body: "Proven delivery in regulated domains including blockchain compliance, KYC, and digital payments." },
-            ].map((item) => (
-              <div key={item.title} className="rounded-xl border border-border bg-bg-primary p-8">
-                <h3 className="text-lg font-semibold text-accent">{item.title}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-text-muted">{item.body}</p>
+            {dict.company.capabilities.items.map((item) => (
+              <div
+                key={item.title}
+                className="rounded-xl border border-border bg-bg-surface p-8"
+              >
+                <h3 className="text-lg font-semibold text-accent">
+                  {item.title}
+                </h3>
+                <p className="mt-3 text-sm leading-relaxed text-text-muted">
+                  {item.body}
+                </p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <CTABanner headline="Let&apos;s talk about what Agentic AI can do for your business." />
+      {/* Trust & Governance */}
+      <section className="border-b border-border bg-bg-surface">
+        <div className="mx-auto max-w-7xl px-6 py-24 lg:px-12 lg:py-28">
+          <p className="text-xs font-medium tracking-[0.25em] text-premium uppercase">
+            {dict.company.trust.label}
+          </p>
+          <h2 className="mt-4 text-3xl font-semibold tracking-tight text-text-primary sm:text-4xl">
+            {dict.company.trust.title}
+          </h2>
+          <p className="mt-5 max-w-2xl text-text-muted leading-relaxed">
+            {dict.company.trust.description}
+          </p>
+          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {dict.company.trustItems.map((item) => (
+              <div
+                key={item.title}
+                className="rounded-xl border border-border bg-bg-primary p-7"
+              >
+                <h3 className="text-base font-semibold text-accent">
+                  {item.title}
+                </h3>
+                <p className="mt-3 text-sm leading-relaxed text-text-muted">
+                  {item.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <CTABanner headline={dict.company.ctaHeadline} />
     </>
   );
 }

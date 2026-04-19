@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import FloatingLineButton from "@/components/FloatingLineButton";
+import { contactInfo, siteUrl } from "@/data/content";
+import { getDictionary, getLocale } from "@/i18n";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -14,35 +17,78 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: {
-    default: "Enabridge — Agentic AI for Business",
-    template: "%s | Enabridge",
-  },
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getLocale();
+  const dict = getDictionary(locale);
+  return {
+    title: {
+      default: dict.metadata.rootTitleDefault,
+      template: "%s | Enabridge",
+    },
+    description: dict.metadata.rootDescription,
+    metadataBase: new URL(siteUrl),
+    alternates: { canonical: "/" },
+    openGraph: {
+      type: "website",
+      locale: locale === "th" ? "th_TH" : "en_US",
+      siteName: "Enabridge",
+      url: siteUrl,
+    },
+    twitter: { card: "summary_large_image" },
+    icons: { icon: "/brand-mark.svg" },
+  };
+}
+
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "Enabridge",
+  url: siteUrl,
+  logo: `${siteUrl}/brand-mark.svg`,
   description:
-    "Enabridge designs and deploys Agentic AI that accelerates business execution — with human oversight, audit trails, and production-grade reliability.",
-  metadataBase: new URL("https://enabridge.ai"),
-  openGraph: {
-    type: "website",
-    locale: "en_US",
-    siteName: "Enabridge",
+    "Enabridge builds production software with AI coding agents, trains organizations on AI, and develops OpenBridge — an Agentic AI platform.",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Bangkok",
+    addressCountry: "TH",
   },
-  icons: {
-    icon: "/brand-mark.svg",
+  contactPoint: {
+    "@type": "ContactPoint",
+    telephone: "+66-65-668-8686",
+    email: "team@enabridge.ai",
+    contactType: "customer support",
+    areaServed: "TH",
+    availableLanguage: ["en", "th"],
+  },
+  sameAs: [contactInfo.youtube.url, contactInfo.linkedin.founder],
+  founder: {
+    "@type": "Person",
+    name: "Ekkachai Nuangsapsaen",
+    url: contactInfo.linkedin.founder,
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const locale = await getLocale();
   return (
-    <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+    <html lang={locale}>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      >
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationSchema),
+          }}
+        />
         <Navbar />
         <main>{children}</main>
         <Footer />
+        <FloatingLineButton />
       </body>
     </html>
   );

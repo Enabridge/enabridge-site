@@ -1,11 +1,18 @@
 import Link from "next/link";
+import { getDictionary, getLocale } from "@/i18n";
 
 type BrandLogoProps = {
   href?: string;
   compact?: boolean;
 };
 
-export default function BrandLogo({ href = "/", compact = false }: BrandLogoProps) {
+export default async function BrandLogo({
+  href = "/",
+  compact = false,
+}: BrandLogoProps) {
+  const locale = await getLocale();
+  const dict = getDictionary(locale);
+
   const content = (
     <>
       <svg
@@ -23,10 +30,12 @@ export default function BrandLogo({ href = "/", compact = false }: BrandLogoProp
         />
       </svg>
       <div className="min-w-0">
-        <div className="text-sm font-semibold tracking-[0.24em] text-logo-text uppercase">Enabridge</div>
+        <div className="text-sm font-semibold tracking-[0.24em] text-logo-text uppercase">
+          Enabridge
+        </div>
         {!compact && (
           <div className="text-[11px] tracking-[0.18em] text-text-secondary uppercase">
-            Agentic AI, trust-first
+            {dict.brand.tagline}
           </div>
         )}
       </div>
@@ -34,7 +43,10 @@ export default function BrandLogo({ href = "/", compact = false }: BrandLogoProp
   );
 
   return (
-    <Link href={href} className="inline-flex items-center gap-3 text-logo-mark transition hover:opacity-90">
+    <Link
+      href={href}
+      className="inline-flex items-center gap-3 text-logo-mark transition hover:opacity-90"
+    >
       {content}
     </Link>
   );

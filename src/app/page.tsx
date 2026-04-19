@@ -1,46 +1,46 @@
 import Link from "next/link";
-import {
-  trustChips,
-  agenticMaturity,
-  deliveryPhases,
-  whyEnabridge,
-  caseStudies,
-  trustGovernance,
-} from "@/data/content";
 import CTABanner from "@/components/CTABanner";
+import { getDictionary, getLocale } from "@/i18n";
 
-export default function Home() {
+export default async function Home() {
+  const locale = await getLocale();
+  const dict = getDictionary(locale);
+
+  const services = dict.services.items;
+  const caseStudies = dict.caseStudies;
+  const whyEnabridge = dict.whyEnabridge;
+  const trainingCredentials = dict.trainingCredentials;
+
   return (
     <>
       {/* Hero */}
       <section className="border-b border-border bg-bg-primary">
         <div className="mx-auto max-w-7xl px-6 py-28 lg:px-12 lg:py-40">
           <p className="text-xs font-medium tracking-[0.25em] text-premium uppercase">
-            Agentic AI for Business
+            {dict.home.hero.label}
           </p>
           <h1 className="mt-7 max-w-4xl text-4xl font-semibold leading-[1.12] tracking-tight text-text-primary sm:text-5xl lg:text-[3.5rem]">
-            Agentic AI that accelerates execution — without increasing operational risk.
+            {dict.home.hero.title}
           </h1>
           <p className="mt-8 max-w-2xl text-lg leading-relaxed text-text-muted">
-            We design and integrate AI agents that run real workflows across your systems.
-            Measurable business impact with human oversight and production-grade engineering.
+            {dict.home.hero.description}
           </p>
           <div className="mt-12 flex flex-col gap-4 sm:flex-row">
             <Link
-              href="/contact"
+              href="/case-studies"
               className="inline-flex items-center justify-center rounded-full bg-primary px-8 py-4 text-sm font-semibold text-accent shadow-lg shadow-primary/20 transition hover:bg-cta-hover hover:shadow-cta-hover/25"
             >
-              Book a 30-minute Agentic Fit Call
+              {dict.home.hero.ctaPrimary}
             </Link>
             <Link
-              href="/case-studies"
+              href="/contact"
               className="inline-flex items-center justify-center rounded-full border border-border px-8 py-4 text-sm font-medium text-text-muted transition hover:border-accent/50 hover:text-accent"
             >
-              See our proven deliveries
+              {dict.home.hero.ctaSecondary}
             </Link>
           </div>
           <div className="mt-16 flex flex-wrap gap-3">
-            {trustChips.map((chip) => (
+            {dict.home.trustChips.map((chip) => (
               <span
                 key={chip}
                 className="rounded-full border border-border bg-bg-surface/80 px-4 py-2 text-xs font-medium tracking-wide text-text-secondary"
@@ -52,84 +52,46 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Agentic AI maturity */}
+      {/* What we do */}
       <section className="border-b border-border bg-bg-surface">
         <div className="mx-auto max-w-7xl px-6 py-24 lg:px-12 lg:py-28">
           <p className="text-xs font-medium tracking-[0.25em] text-premium uppercase">
-            What we mean by Agentic AI
+            {dict.home.whatWeDo.label}
           </p>
           <h2 className="mt-5 max-w-2xl text-3xl font-semibold tracking-tight text-text-primary sm:text-4xl">
-            Staged maturity — not a switch you flip overnight.
+            {dict.home.whatWeDo.title}
           </h2>
           <div className="mt-14 grid gap-6 md:grid-cols-3">
-            {agenticMaturity.map((item, i) => (
-              <div key={item.stage} className="rounded-xl border border-border bg-bg-primary p-8">
-                <span className="text-xs font-medium tracking-wide text-premium">Stage {i + 1}</span>
-                <h3 className="mt-3 text-xl font-semibold text-accent">{item.stage}</h3>
-                <p className="mt-4 text-sm leading-relaxed text-text-muted">{item.description}</p>
-              </div>
+            {services.map((s) => (
+              <Link
+                key={s.slug}
+                href={`/services/${s.slug}`}
+                className="group rounded-xl border border-border bg-bg-primary p-8 transition hover:border-accent/40 hover:bg-bg-elevated"
+              >
+                <h3 className="text-lg font-semibold text-text-primary group-hover:text-accent transition">
+                  {s.title}
+                </h3>
+                <p className="mt-3 text-sm leading-relaxed text-text-muted">
+                  {s.tagline}
+                </p>
+              </Link>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Productized delivery */}
+      {/* Proven delivery */}
       <section className="border-b border-border">
         <div className="mx-auto max-w-7xl px-6 py-24 lg:px-12 lg:py-28">
           <p className="text-xs font-medium tracking-[0.25em] text-premium uppercase">
-            Productized delivery
+            {dict.home.shipped.label}
           </p>
           <h2 className="mt-5 max-w-2xl text-3xl font-semibold tracking-tight text-text-primary sm:text-4xl">
-            From opportunity scan to production in weeks — not months.
+            {dict.home.shipped.title}
           </h2>
-          <div className="mt-14 grid gap-6 md:grid-cols-3">
-            {deliveryPhases.map((phase) => (
-              <div key={phase.title} className="rounded-xl border border-border bg-bg-surface p-8">
-                <span className="text-xs font-medium tracking-wide text-premium">{phase.timeline}</span>
-                <h3 className="mt-3 text-lg font-semibold text-text-primary">{phase.title}</h3>
-                <ul className="mt-5 space-y-3">
-                  {phase.items.map((item) => (
-                    <li key={item} className="flex items-start gap-2.5 text-sm leading-relaxed text-text-muted">
-                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Why Enabridge */}
-      <section className="border-b border-border bg-bg-surface">
-        <div className="mx-auto max-w-7xl px-6 py-24 lg:px-12 lg:py-28">
-          <p className="text-xs font-medium tracking-[0.25em] text-premium uppercase">
-            Why Enabridge
+          <p className="mt-4 max-w-2xl text-text-muted leading-relaxed">
+            {dict.home.shipped.subtitle}
           </p>
-          <h2 className="mt-5 max-w-2xl text-3xl font-semibold tracking-tight text-text-primary sm:text-4xl">
-            Business outcomes first. Technology second.
-          </h2>
-          <div className="mt-14 grid gap-6 sm:grid-cols-2">
-            {whyEnabridge.map((item) => (
-              <div key={item.title} className="rounded-xl border border-border bg-bg-primary p-8">
-                <h3 className="text-lg font-semibold text-text-primary">{item.title}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-text-muted">{item.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Proof */}
-      <section className="border-b border-border">
-        <div className="mx-auto max-w-7xl px-6 py-24 lg:px-12 lg:py-28">
-          <p className="text-xs font-medium tracking-[0.25em] text-premium uppercase">
-            Proven delivery
-          </p>
-          <h2 className="mt-5 max-w-2xl text-3xl font-semibold tracking-tight text-text-primary sm:text-4xl">
-            Real systems, shipped and running in production.
-          </h2>
           <div className="mt-14 grid gap-6 md:grid-cols-3">
             {caseStudies.map((cs) => (
               <Link
@@ -140,11 +102,21 @@ export default function Home() {
                 <h3 className="text-lg font-semibold text-text-primary group-hover:text-accent transition">
                   {cs.title}
                 </h3>
-                <p className="mt-2 text-sm leading-relaxed text-text-muted">{cs.tagline}</p>
-                <div className="mt-6 flex flex-wrap gap-3">
+                <p className="mt-2 text-sm leading-relaxed text-text-muted">
+                  {cs.tagline}
+                </p>
+                <p className="mt-3 inline-block rounded-full bg-primary/15 px-3 py-1 text-xs font-medium text-accent">
+                  {cs.aiStory}
+                </p>
+                <div className="mt-4 flex flex-wrap gap-3">
                   {cs.stats.map((stat) => (
-                    <div key={stat.label} className="rounded-lg bg-bg-primary px-3 py-2">
-                      <p className="text-sm font-semibold text-accent">{stat.value}</p>
+                    <div
+                      key={stat.label}
+                      className="rounded-lg bg-bg-primary px-3 py-2"
+                    >
+                      <p className="text-sm font-semibold text-accent">
+                        {stat.value}
+                      </p>
                       <p className="text-xs text-text-muted">{stat.label}</p>
                     </div>
                   ))}
@@ -155,27 +127,84 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Trust & Governance */}
+      {/* Training track record */}
       <section className="border-b border-border bg-bg-surface">
         <div className="mx-auto max-w-7xl px-6 py-24 lg:px-12 lg:py-28">
           <p className="text-xs font-medium tracking-[0.25em] text-premium uppercase">
-            Trust & Governance
+            {dict.home.training.label}
           </p>
           <h2 className="mt-5 max-w-2xl text-3xl font-semibold tracking-tight text-text-primary sm:text-4xl">
-            Safety is not a feature — it is the architecture.
+            {dict.home.training.title}
           </h2>
-          <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {trustGovernance.map((item) => (
-              <div key={item.title} className="rounded-xl border border-border bg-bg-primary p-7">
-                <h3 className="text-base font-semibold text-accent">{item.title}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-text-muted">{item.description}</p>
+          <p className="mt-4 max-w-2xl text-text-muted leading-relaxed">
+            {dict.home.training.subtitle}
+          </p>
+          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+            {trainingCredentials.map((cred) => (
+              <div
+                key={cred.name}
+                className="rounded-xl border border-border bg-bg-primary px-5 py-6"
+              >
+                <h3 className="text-sm font-semibold text-accent">
+                  {cred.name}
+                </h3>
+                <p className="mt-1 text-xs text-text-muted">{cred.type}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Final CTA */}
+      {/* OpenBridge teaser */}
+      <section className="border-b border-border">
+        <div className="mx-auto max-w-7xl px-6 py-24 lg:px-12 lg:py-28">
+          <p className="text-xs font-medium tracking-[0.25em] text-premium uppercase">
+            {dict.home.openbridgeTeaser.label}
+          </p>
+          <h2 className="mt-5 max-w-2xl text-3xl font-semibold tracking-tight text-text-primary sm:text-4xl">
+            {dict.home.openbridgeTeaser.title}
+          </h2>
+          <p className="mt-6 max-w-2xl text-text-muted leading-relaxed">
+            {dict.home.openbridgeTeaser.description}
+          </p>
+          <div className="mt-8">
+            <Link
+              href="/openbridge"
+              className="inline-flex items-center justify-center rounded-full border border-accent/40 bg-white/5 px-7 py-3 text-sm font-semibold text-accent transition hover:border-accent/70 hover:bg-primary/15 hover:text-white"
+            >
+              {dict.home.openbridgeTeaser.cta}
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Why Enabridge */}
+      <section className="border-b border-border bg-bg-surface">
+        <div className="mx-auto max-w-7xl px-6 py-24 lg:px-12 lg:py-28">
+          <p className="text-xs font-medium tracking-[0.25em] text-premium uppercase">
+            {dict.home.whyEnabridge.label}
+          </p>
+          <h2 className="mt-5 max-w-2xl text-3xl font-semibold tracking-tight text-text-primary sm:text-4xl">
+            {dict.home.whyEnabridge.title}
+          </h2>
+          <div className="mt-14 grid gap-6 sm:grid-cols-2">
+            {whyEnabridge.map((item) => (
+              <div
+                key={item.title}
+                className="rounded-xl border border-border bg-bg-primary p-8"
+              >
+                <h3 className="text-lg font-semibold text-text-primary">
+                  {item.title}
+                </h3>
+                <p className="mt-3 text-sm leading-relaxed text-text-muted">
+                  {item.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <CTABanner />
     </>
   );

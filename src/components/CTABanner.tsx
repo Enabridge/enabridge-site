@@ -1,41 +1,45 @@
-import Link from "next/link";
+import { contactInfo } from "@/data/content";
+import { getDictionary, getLocale } from "@/i18n";
 
-export default function CTABanner({
-  headline = "Ready to deploy Agentic AI safely?",
-  primaryLabel = "Book a 30-minute Agentic Fit Call",
-  primaryHref = "/contact",
-  secondaryLabel = "Contact us",
-  secondaryHref = "/contact",
+export default async function CTABanner({
+  headline,
 }: {
   headline?: string;
-  primaryLabel?: string;
-  primaryHref?: string;
-  secondaryLabel?: string;
-  secondaryHref?: string;
 }) {
+  const locale = await getLocale();
+  const dict = getDictionary(locale);
+
   return (
     <section className="border-t border-border">
       <div className="mx-auto max-w-7xl px-6 py-24 lg:px-12 lg:py-28">
         <div className="rounded-2xl border border-border bg-bg-surface px-8 py-16 text-center sm:px-16">
           <h2 className="text-3xl font-semibold tracking-tight text-text-primary sm:text-4xl">
-            {headline}
+            {headline ?? dict.cta.defaultHeadline}
           </h2>
           <p className="mx-auto mt-4 max-w-lg text-sm leading-relaxed text-text-muted">
-            No commitment required. We will assess where Agentic AI fits your workflows and outline a practical path forward.
+            {dict.cta.defaultDescription}
           </p>
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Link
-              href={primaryHref}
+            <a
+              href={contactInfo.line.url}
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center justify-center rounded-full bg-primary px-8 py-3.5 text-sm font-semibold text-accent shadow-lg shadow-primary/20 transition hover:bg-cta-hover hover:shadow-cta-hover/25"
             >
-              {primaryLabel}
-            </Link>
-            <Link
-              href={secondaryHref}
+              LINE {contactInfo.line.id}
+            </a>
+            <a
+              href={contactInfo.phone.href}
               className="inline-flex items-center justify-center rounded-full border border-border px-8 py-3.5 text-sm font-medium text-text-muted transition hover:border-accent/50 hover:text-accent"
             >
-              {secondaryLabel}
-            </Link>
+              {contactInfo.phone.display}
+            </a>
+            <a
+              href={contactInfo.email.href}
+              className="inline-flex items-center justify-center rounded-full border border-border px-8 py-3.5 text-sm font-medium text-text-muted transition hover:border-accent/50 hover:text-accent"
+            >
+              {contactInfo.email.display}
+            </a>
           </div>
         </div>
       </div>
