@@ -26,6 +26,7 @@
   ],
   "script_char_count": 2973,
   "audio_file": "26-04-18.mp3",
-  "voice": "nova",
-  "model": "tts-1-hd"
+  "voice": "coral",
+  "model": "gpt-4o-mini-tts",
+  "speed": 1.3
 }
