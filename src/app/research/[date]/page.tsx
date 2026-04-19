@@ -5,7 +5,6 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import type { Components } from "react-markdown";
 import {
-  RESEARCH_REVALIDATE,
   audioUrl,
   fetchEpisodeBriefs,
   fetchIndex,
@@ -13,7 +12,9 @@ import {
   imageUrl,
 } from "@/lib/research";
 
-export const revalidate = RESEARCH_REVALIDATE;
+// Matches RESEARCH_REVALIDATE in src/lib/research.ts (Next.js segment
+// config requires literal values).
+export const revalidate = 300;
 
 type PageProps = {
   params: Promise<{ date: string }>;

@@ -1,14 +1,15 @@
 import Link from "next/link";
 import Image from "next/image";
 import {
-  RESEARCH_REVALIDATE,
   fetchIndex,
   fetchBrief,
   imageUrl,
   formatThaiDate,
 } from "@/lib/research";
 
-export const revalidate = RESEARCH_REVALIDATE;
+// Matches RESEARCH_REVALIDATE in src/lib/research.ts (Next.js segment
+// config requires literal values).
+export const revalidate = 300;
 
 export const metadata = {
   title: "Daily AI Brief",
