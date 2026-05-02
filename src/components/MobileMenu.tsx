@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import LanguageToggle from "@/components/LanguageToggle";
+import ThemeToggle from "@/components/ThemeToggle";
 import type { Locale } from "@/i18n/types";
 
 type MobileMenuProps = {
@@ -10,6 +11,8 @@ type MobileMenuProps = {
   contactLabel: string;
   toggleLabel: string;
   toggleAria: string;
+  themeLightAria: string;
+  themeDarkAria: string;
   locale: Locale;
 };
 
@@ -18,6 +21,8 @@ export default function MobileMenu({
   contactLabel,
   toggleLabel,
   toggleAria,
+  themeLightAria,
+  themeDarkAria,
   locale,
 }: MobileMenuProps) {
   const [open, setOpen] = useState(false);
@@ -35,18 +40,22 @@ export default function MobileMenu({
       </button>
 
       {open && (
-        <div className="absolute inset-x-0 top-full border-t border-border bg-bg-primary/95 px-6 pb-6 pt-2 lg:hidden">
+        <div className="absolute inset-x-0 top-full border-t border-border bg-bg-primary px-6 pb-6 pt-2 lg:hidden">
           {links.map((link) => (
             <Link
               key={link.href}
               href={link.href}
               onClick={() => setOpen(false)}
-              className="block py-3 text-sm text-text-muted transition hover:text-accent"
+              className="block py-3 text-sm text-text-muted transition hover:text-primary"
             >
               {link.label}
             </Link>
           ))}
-          <div className="mt-4 flex items-center gap-3">
+          <div className="mt-4 flex items-center gap-2">
+            <ThemeToggle
+              lightAria={themeLightAria}
+              darkAria={themeDarkAria}
+            />
             <LanguageToggle
               locale={locale}
               switchToLabel={toggleLabel}
@@ -55,7 +64,7 @@ export default function MobileMenu({
             <Link
               href="/contact"
               onClick={() => setOpen(false)}
-              className="inline-flex flex-1 items-center justify-center rounded-full border border-accent/40 bg-white/5 px-5 py-3 text-sm font-semibold text-accent transition hover:bg-primary/15 hover:text-white"
+              className="inline-flex flex-1 items-center justify-center rounded-lg border border-primary/40 bg-primary/5 px-5 py-2.5 text-sm font-semibold text-primary transition hover:border-primary hover:bg-primary hover:text-cta-fg"
             >
               {contactLabel}
             </Link>

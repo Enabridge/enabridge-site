@@ -46,7 +46,7 @@ export default async function ServiceDetailPage({
 
       <section className="border-b border-border">
         <div className="mx-auto max-w-7xl px-6 py-24 lg:px-12 lg:py-28">
-          <p className="text-xs font-medium tracking-[0.25em] text-premium uppercase">
+          <p className="eyebrow text-xs text-premium">
             {dict.services.detail.whatWeDeliver}
           </p>
           <h2 className="mt-4 text-3xl font-semibold tracking-tight text-text-primary sm:text-4xl">

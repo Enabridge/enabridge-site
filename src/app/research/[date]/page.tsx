@@ -8,7 +8,7 @@ import {
   audioUrl,
   fetchEpisodeBriefs,
   fetchIndex,
-  formatThaiDate,
+  formatThaiDateTime,
   imageUrl,
 } from "@/lib/research";
 
@@ -110,7 +110,7 @@ export default async function ResearchDetailPage({ params }: PageProps) {
           </Link>
 
           <p className="mt-6 text-xs font-medium uppercase tracking-[0.25em] text-premium">
-            {formatThaiDate(ep.iso_date)} · {ep.items.length} stories
+            {formatThaiDateTime(ep.iso_date)} · {ep.items.length} stories
           </p>
           <h1 className="mt-4 text-3xl font-semibold leading-[1.2] tracking-tight text-text-primary sm:text-4xl">
             {ep.title}

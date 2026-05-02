@@ -727,6 +727,10 @@ export const en = {
     current: "EN",
     aria: "Switch to Thai",
   },
+  theme: {
+    toLight: "Switch to light mode",
+    toDark: "Switch to dark mode",
+  },
 } as const;
 
 type Widen<T> = T extends string

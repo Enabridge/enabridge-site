@@ -1,40 +1,164 @@
 @import "tailwindcss";
 
-@theme inline {
-  --color-bg-primary: #11111b;
-  --color-bg-surface: #1e1e2e;
-  --color-bg-elevated: #26263a;
-  --color-primary: #8caaee;
-  --color-accent: #b4befe;
-  --color-premium: #f2cdcd;
-  --color-logo-mark: #94e2d5;
-  --color-logo-text: #f5e0dc;
-  --color-text-primary: #f5f7fb;
-  --color-text-secondary: #cdd6f4;
-  --color-text-muted: #a6adc8;
-  --color-border: #313244;
-  --color-border-subtle: #24273a;
-  --color-cta-hover: #74c7ec;
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* =========================================================================
+   Enabridge CI tokens — light mode primary, dark via [data-theme="dark"]
+   Sourced from ~/ws/company/enabridge-ci (design-tokens.json, tokens.css)
+   ========================================================================= */
+
+:root {
+  /* ---------- Primitive palette ---------- */
+  --color-ink-900: #0B1220;
+  --color-ink-800: #111827;
+  --color-ink-700: #1E293B;
+  --color-ink-600: #334155;
+  --color-ink-500: #475569;
+  --color-ink-400: #94A3B8;
+  --color-ink-300: #CBD5E1;
+  --color-ink-200: #E2E8F0;
+  --color-ink-100: #F1F5F9;
+
+  --color-paper-50:  #FAF7F2;
+  --color-paper-100: #F3ECE1;
+  --color-paper-200: #E8DCCB;
+
+  --color-rose-900: #4A342D;
+  --color-rose-700: #A07A6E;
+  --color-rose-500: #D9B5A8;
+  --color-rose-300: #EBD4CA;
+  --color-rose-100: #F6E8E2;
+
+  --color-gold-500: #C9A96A;
+
+  --color-success: #3E8E7E;
+  --color-warning: #C9A96A;
+  --color-danger:  #B94A48;
+  --color-info:    #4A6FA5;
+
+  /* ---------- Semantic (LIGHT mode defaults) ---------- */
+  --bg-canvas:       var(--color-paper-50);
+  --bg-surface:      var(--color-paper-100);
+  --bg-elevated:     var(--color-paper-200);
+  --bg-inverse:      var(--color-ink-900);
+
+  --fg-default:      var(--color-ink-900);
+  --fg-secondary:    var(--color-ink-700);
+  --fg-muted:        var(--color-ink-600);
+  --fg-subtle:       var(--color-ink-400);
+  --fg-on-inverse:   var(--color-paper-50);
+  --fg-brand:        var(--color-rose-700);   /* emphasis / links */
+  --fg-brand-accent: var(--color-rose-500);   /* signature dusty rose */
+  --fg-premium:      var(--color-gold-500);
+
+  --border-default:  var(--color-ink-200);
+  --border-strong:   var(--color-ink-400);
+  --border-subtle:   var(--color-ink-100);
+
+  --cta-bg:          var(--color-rose-700);
+  --cta-fg:          var(--color-paper-50);
+  --cta-hover:       var(--color-rose-900);
 }
 
-* {
-  box-sizing: border-box;
+/* =========================================================================
+   Dark mode override (explicit toggle only — no auto system pref for now)
+   ========================================================================= */
+[data-theme="dark"] {
+  --bg-canvas:       var(--color-ink-900);
+  --bg-surface:      var(--color-ink-800);
+  --bg-elevated:     var(--color-ink-700);
+  --bg-inverse:      var(--color-paper-50);
+
+  --fg-default:      var(--color-paper-50);
+  --fg-secondary:    var(--color-ink-200);
+  --fg-muted:        var(--color-ink-300);
+  --fg-subtle:       var(--color-ink-400);
+  --fg-on-inverse:   var(--color-ink-900);
+  --fg-brand:        var(--color-rose-300);
+  --fg-brand-accent: var(--color-rose-500);
+
+  --border-default:  var(--color-ink-600);
+  --border-strong:   var(--color-ink-400);
+  --border-subtle:   var(--color-ink-700);
+
+  --cta-bg:          var(--color-rose-500);
+  --cta-fg:          var(--color-ink-900);
+  --cta-hover:       var(--color-rose-300);
 }
+
+/* =========================================================================
+   Tailwind v4 theme mapping
+   Keeps existing class names (bg-bg-primary, text-accent, etc.) but maps
+   them to CI semantic tokens so every page auto-aligns.
+   ========================================================================= */
+@theme inline {
+  /* Canvas layers */
+  --color-bg-primary:  var(--bg-canvas);
+  --color-bg-surface:  var(--bg-surface);
+  --color-bg-elevated: var(--bg-elevated);
+
+  /* Brand tokens */
+  --color-primary: var(--fg-brand);          /* rose-700 light, rose-300 dark */
+  --color-accent:  var(--fg-brand-accent);   /* rose-500 signature */
+  --color-premium: var(--fg-premium);        /* gold-500 */
+
+  /* Logo */
+  --color-logo-mark: var(--fg-brand);
+  --color-logo-text: var(--fg-default);
+
+  /* Text */
+  --color-text-primary:   var(--fg-default);
+  --color-text-secondary: var(--fg-secondary);
+  --color-text-muted:     var(--fg-muted);
+  --color-text-subtle:    var(--fg-subtle);
+
+  /* Borders */
+  --color-border:         var(--border-default);
+  --color-border-subtle:  var(--border-subtle);
+  --color-border-strong:  var(--border-strong);
+
+  /* Functional */
+  --color-success: var(--color-success);
+  --color-warning: var(--color-warning);
+  --color-danger:  var(--color-danger);
+  --color-info:    var(--color-info);
+
+  /* CTA */
+  --color-cta-bg:    var(--cta-bg);
+  --color-cta-fg:    var(--cta-fg);
+  --color-cta-hover: var(--cta-hover);
+
+  /* Raw rose tokens for opacity utilities (bg-rose-500/20 etc.) */
+  --color-rose-500: var(--color-rose-500);
+  --color-rose-700: var(--color-rose-700);
+  --color-rose-300: var(--color-rose-300);
+
+  /* Fonts — set on <body> via layout.tsx next/font variables.
+     Google Fonts has no IBM Plex Serif Thai, so Thai falls back to the
+     sans Plex Thai Looped face for both serif and sans contexts. */
+  --font-serif: var(--font-newsreader), var(--font-plex-thai), Georgia, serif;
+  --font-sans:  var(--font-inter), var(--font-plex-thai), -apple-system, system-ui, sans-serif;
+  --font-mono:  var(--font-jetbrains-mono), ui-monospace, SFMono-Regular, monospace;
+}
+
+/* =========================================================================
+   Base
+   ========================================================================= */
+* { box-sizing: border-box; }
 
 html {
   scroll-behavior: smooth;
+  background: var(--bg-canvas);
+  color: var(--fg-default);
 }
 
 body {
   margin: 0;
-  background:
-    radial-gradient(circle at top, rgba(180, 190, 254, 0.12), transparent 0 30%),
-    radial-gradient(circle at right top, rgba(148, 226, 213, 0.1), transparent 0 24%),
-    var(--color-bg-primary);
-  color: var(--color-text-primary);
-  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  background: var(--bg-canvas);
+  color: var(--fg-default);
+  font-family: var(--font-inter), var(--font-plex-thai),
+               -apple-system, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 a {
@@ -43,6 +167,21 @@ a {
 }
 
 ::selection {
-  background: var(--color-primary);
-  color: var(--color-bg-primary);
+  background: var(--fg-brand-accent);
+  color: var(--color-ink-900);
+}
+
+/* Editorial display headings — used on hero titles */
+.display-serif {
+  font-family: var(--font-newsreader), var(--font-plex-thai), Georgia, serif;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+/* Eyebrow / small caps labels (mono) */
+.eyebrow {
+  font-family: var(--font-jetbrains-mono), ui-monospace, monospace;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
 }

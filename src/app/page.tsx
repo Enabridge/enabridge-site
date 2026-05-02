@@ -16,10 +16,10 @@ export default async function Home() {
       {/* Hero */}
       <section className="border-b border-border bg-bg-primary">
         <div className="mx-auto max-w-7xl px-6 py-28 lg:px-12 lg:py-40">
-          <p className="text-xs font-medium tracking-[0.25em] text-premium uppercase">
+          <p className="eyebrow text-xs text-premium">
             {dict.home.hero.label}
           </p>
-          <h1 className="mt-7 max-w-4xl text-4xl font-semibold leading-[1.12] tracking-tight text-text-primary sm:text-5xl lg:text-[3.5rem]">
+          <h1 className="display-serif mt-7 max-w-4xl text-4xl leading-[1.1] text-text-primary sm:text-5xl lg:text-[3.5rem]">
             {dict.home.hero.title}
           </h1>
           <p className="mt-8 max-w-2xl text-lg leading-relaxed text-text-muted">
@@ -28,13 +28,13 @@ export default async function Home() {
           <div className="mt-12 flex flex-col gap-4 sm:flex-row">
             <Link
               href="/case-studies"
-              className="inline-flex items-center justify-center rounded-full bg-primary px-8 py-4 text-sm font-semibold text-accent shadow-lg shadow-primary/20 transition hover:bg-cta-hover hover:shadow-cta-hover/25"
+              className="inline-flex items-center justify-center rounded-lg bg-cta-bg px-8 py-3.5 text-sm font-semibold text-cta-fg shadow-md transition hover:bg-cta-hover"
             >
               {dict.home.hero.ctaPrimary}
             </Link>
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center rounded-full border border-border px-8 py-4 text-sm font-medium text-text-muted transition hover:border-accent/50 hover:text-accent"
+              className="inline-flex items-center justify-center rounded-lg border border-border px-8 py-3.5 text-sm font-medium text-text-muted transition hover:border-primary hover:text-primary"
             >
               {dict.home.hero.ctaSecondary}
             </Link>
@@ -55,7 +55,7 @@ export default async function Home() {
       {/* What we do */}
       <section className="border-b border-border bg-bg-surface">
         <div className="mx-auto max-w-7xl px-6 py-24 lg:px-12 lg:py-28">
-          <p className="text-xs font-medium tracking-[0.25em] text-premium uppercase">
+          <p className="eyebrow text-xs text-premium">
             {dict.home.whatWeDo.label}
           </p>
           <h2 className="mt-5 max-w-2xl text-3xl font-semibold tracking-tight text-text-primary sm:text-4xl">
@@ -83,7 +83,7 @@ export default async function Home() {
       {/* Proven delivery */}
       <section className="border-b border-border">
         <div className="mx-auto max-w-7xl px-6 py-24 lg:px-12 lg:py-28">
-          <p className="text-xs font-medium tracking-[0.25em] text-premium uppercase">
+          <p className="eyebrow text-xs text-premium">
             {dict.home.shipped.label}
           </p>
           <h2 className="mt-5 max-w-2xl text-3xl font-semibold tracking-tight text-text-primary sm:text-4xl">
@@ -130,7 +130,7 @@ export default async function Home() {
       {/* Training track record */}
       <section className="border-b border-border bg-bg-surface">
         <div className="mx-auto max-w-7xl px-6 py-24 lg:px-12 lg:py-28">
-          <p className="text-xs font-medium tracking-[0.25em] text-premium uppercase">
+          <p className="eyebrow text-xs text-premium">
             {dict.home.training.label}
           </p>
           <h2 className="mt-5 max-w-2xl text-3xl font-semibold tracking-tight text-text-primary sm:text-4xl">
@@ -158,7 +158,7 @@ export default async function Home() {
       {/* OpenBridge teaser */}
       <section className="border-b border-border">
         <div className="mx-auto max-w-7xl px-6 py-24 lg:px-12 lg:py-28">
-          <p className="text-xs font-medium tracking-[0.25em] text-premium uppercase">
+          <p className="eyebrow text-xs text-premium">
             {dict.home.openbridgeTeaser.label}
           </p>
           <h2 className="mt-5 max-w-2xl text-3xl font-semibold tracking-tight text-text-primary sm:text-4xl">
@@ -170,7 +170,7 @@ export default async function Home() {
           <div className="mt-8">
             <Link
               href="/openbridge"
-              className="inline-flex items-center justify-center rounded-full border border-accent/40 bg-white/5 px-7 py-3 text-sm font-semibold text-accent transition hover:border-accent/70 hover:bg-primary/15 hover:text-white"
+              className="inline-flex items-center justify-center rounded-lg border border-primary/40 bg-primary/5 px-7 py-3 text-sm font-semibold text-primary transition hover:border-primary hover:bg-primary hover:text-cta-fg"
             >
               {dict.home.openbridgeTeaser.cta}
             </Link>
@@ -181,7 +181,7 @@ export default async function Home() {
       {/* Why Enabridge */}
       <section className="border-b border-border bg-bg-surface">
         <div className="mx-auto max-w-7xl px-6 py-24 lg:px-12 lg:py-28">
-          <p className="text-xs font-medium tracking-[0.25em] text-premium uppercase">
+          <p className="eyebrow text-xs text-premium">
             {dict.home.whyEnabridge.label}
           </p>
           <h2 className="mt-5 max-w-2xl text-3xl font-semibold tracking-tight text-text-primary sm:text-4xl">

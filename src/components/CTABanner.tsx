@@ -24,19 +24,19 @@ export default async function CTABanner({
               href={contactInfo.line.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center rounded-full bg-primary px-8 py-3.5 text-sm font-semibold text-accent shadow-lg shadow-primary/20 transition hover:bg-cta-hover hover:shadow-cta-hover/25"
+              className="inline-flex items-center justify-center rounded-lg bg-cta-bg px-8 py-3.5 text-sm font-semibold text-cta-fg shadow-md transition hover:bg-cta-hover"
             >
               LINE {contactInfo.line.id}
             </a>
             <a
               href={contactInfo.phone.href}
-              className="inline-flex items-center justify-center rounded-full border border-border px-8 py-3.5 text-sm font-medium text-text-muted transition hover:border-accent/50 hover:text-accent"
+              className="inline-flex items-center justify-center rounded-lg border border-border px-8 py-3.5 text-sm font-medium text-text-muted transition hover:border-primary hover:text-primary"
             >
               {contactInfo.phone.display}
             </a>
             <a
               href={contactInfo.email.href}
-              className="inline-flex items-center justify-center rounded-full border border-border px-8 py-3.5 text-sm font-medium text-text-muted transition hover:border-accent/50 hover:text-accent"
+              className="inline-flex items-center justify-center rounded-lg border border-border px-8 py-3.5 text-sm font-medium text-text-muted transition hover:border-primary hover:text-primary"
             >
               {contactInfo.email.display}
             </a>

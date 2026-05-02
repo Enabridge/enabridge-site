@@ -4,7 +4,7 @@ import {
   fetchIndex,
   fetchBrief,
   imageUrl,
-  formatThaiDate,
+  formatThaiDateTime,
 } from "@/lib/research";
 
 // Matches RESEARCH_REVALIDATE in src/lib/research.ts (Next.js segment
@@ -52,7 +52,7 @@ export default async function ResearchIndexPage() {
       {/* Hero */}
       <section className="border-b border-border">
         <div className="mx-auto max-w-7xl px-6 py-20 lg:px-12 lg:py-28">
-          <p className="text-xs font-medium tracking-[0.25em] text-premium uppercase">
+          <p className="eyebrow text-xs text-premium">
             Enabridge Research
           </p>
           <h1 className="mt-6 max-w-3xl text-4xl font-semibold leading-[1.15] tracking-tight text-text-primary sm:text-5xl lg:text-[3.25rem]">
@@ -65,13 +65,13 @@ export default async function ResearchIndexPage() {
           <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
             <a
               href={`podcast://${FEED_URL.replace(/^https:\/\//, "")}`}
-              className="inline-flex items-center justify-center rounded-full bg-primary px-7 py-3 text-sm font-semibold text-accent shadow-lg shadow-primary/20 transition hover:bg-cta-hover hover:shadow-cta-hover/25"
+              className="inline-flex items-center justify-center rounded-lg bg-cta-bg px-7 py-3 text-sm font-semibold text-cta-fg shadow-md transition hover:bg-cta-hover"
             >
               🎧 Subscribe in Podcast app
             </a>
             <a
               href="/research/feed.xml"
-              className="inline-flex items-center justify-center rounded-full border border-border px-7 py-3 text-sm font-medium text-text-muted transition hover:border-accent/50 hover:text-accent"
+              className="inline-flex items-center justify-center rounded-lg border border-border px-7 py-3 text-sm font-medium text-text-muted transition hover:border-primary hover:text-primary"
             >
               RSS feed
             </a>
@@ -137,7 +137,7 @@ export default async function ResearchIndexPage() {
 
                       <div className="flex flex-1 flex-col p-5">
                         <div className="flex items-center gap-2 text-[0.7rem] font-medium uppercase tracking-[0.18em] text-premium">
-                          <span>{formatThaiDate(ep.iso_date)}</span>
+                          <span>{formatThaiDateTime(ep.iso_date)}</span>
                           <span className="text-border">·</span>
                           <span className="text-text-muted">
                             {ep.items.length} stories

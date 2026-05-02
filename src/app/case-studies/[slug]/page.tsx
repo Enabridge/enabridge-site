@@ -59,7 +59,7 @@ export default async function CaseStudyPage({
             ))}
           </div>
 
-          <p className="text-xs font-medium tracking-[0.25em] text-premium uppercase">
+          <p className="eyebrow text-xs text-premium">
             {dict.caseStudiesPage.detail.delivery}
           </p>
           <h2 className="mt-3 text-2xl font-semibold tracking-tight text-text-primary">

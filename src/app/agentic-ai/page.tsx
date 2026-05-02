@@ -25,7 +25,7 @@ export default async function AgenticAIPage() {
 
       <section className="border-b border-border">
         <div className="mx-auto max-w-7xl px-6 py-24 lg:px-12 lg:py-28">
-          <p className="text-xs font-medium tracking-[0.25em] text-premium uppercase">
+          <p className="eyebrow text-xs text-premium">
             {dict.agenticAi.maturity.label}
           </p>
           <h2 className="mt-4 text-3xl font-semibold tracking-tight text-text-primary sm:text-4xl">
@@ -59,7 +59,7 @@ export default async function AgenticAIPage() {
 
       <section className="border-b border-border bg-bg-surface">
         <div className="mx-auto max-w-7xl px-6 py-24 lg:px-12 lg:py-28">
-          <p className="text-xs font-medium tracking-[0.25em] text-premium uppercase">
+          <p className="eyebrow text-xs text-premium">
             {dict.agenticAi.capabilities.label}
           </p>
           <h2 className="mt-4 text-3xl font-semibold tracking-tight text-text-primary sm:text-4xl">
@@ -85,7 +85,7 @@ export default async function AgenticAIPage() {
 
       <section className="border-b border-border">
         <div className="mx-auto max-w-7xl px-6 py-24 lg:px-12 lg:py-28">
-          <p className="text-xs font-medium tracking-[0.25em] text-premium uppercase">
+          <p className="eyebrow text-xs text-premium">
             {dict.agenticAi.product.label}
           </p>
           <h2 className="mt-4 text-3xl font-semibold tracking-tight text-text-primary sm:text-4xl">
@@ -97,7 +97,7 @@ export default async function AgenticAIPage() {
           <div className="mt-8">
             <Link
               href="/openbridge"
-              className="inline-flex items-center justify-center rounded-full border border-accent/40 bg-white/5 px-7 py-3 text-sm font-semibold text-accent transition hover:border-accent/70 hover:bg-primary/15 hover:text-white"
+              className="inline-flex items-center justify-center rounded-lg border border-primary/40 bg-primary/5 px-7 py-3 text-sm font-semibold text-primary transition hover:border-primary hover:bg-primary hover:text-cta-fg"
             >
               {dict.agenticAi.product.cta}
             </Link>
@@ -107,7 +107,7 @@ export default async function AgenticAIPage() {
 
       <section className="border-b border-border bg-bg-surface">
         <div className="mx-auto max-w-7xl px-6 py-24 lg:px-12 lg:py-28">
-          <p className="text-xs font-medium tracking-[0.25em] text-premium uppercase">
+          <p className="eyebrow text-xs text-premium">
             {dict.agenticAi.consulting.label}
           </p>
           <h2 className="mt-4 text-3xl font-semibold tracking-tight text-text-primary sm:text-4xl">

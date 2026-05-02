@@ -725,4 +725,8 @@ export const th: Dictionary = {
     current: "ไทย",
     aria: "เปลี่ยนเป็นภาษาอังกฤษ",
   },
+  theme: {
+    toLight: "เปลี่ยนเป็นโหมดสว่าง",
+    toDark: "เปลี่ยนเป็นโหมดมืด",
+  },
 };

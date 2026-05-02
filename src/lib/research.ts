@@ -115,13 +115,41 @@ export function imageUrl(imagePath: string): string {
   return `${RAW_BASE}/news/${imagePath.replace(/^\/+/, "")}`;
 }
 
+const THAI_MONTHS = [
+  "ม.ค.", "ก.พ.", "มี.ค.", "เม.ย.", "พ.ค.", "มิ.ย.",
+  "ก.ค.", "ส.ค.", "ก.ย.", "ต.ค.", "พ.ย.", "ธ.ค.",
+];
+
+/**
+ * Parse ISO manually (avoids TZ shift across Node/browser).
+ * Handles both "2026-04-19" and "2026-04-19T07:00:00+07:00".
+ */
+function parseIsoParts(
+  iso: string,
+): { y: number; mo: number; d: number; h: number; mi: number } | null {
+  const m = iso.match(/^(\d{4})-(\d{2})-(\d{2})(?:T(\d{2}):(\d{2}))?/);
+  if (!m) return null;
+  return {
+    y: parseInt(m[1], 10),
+    mo: parseInt(m[2], 10),
+    d: parseInt(m[3], 10),
+    h: m[4] ? parseInt(m[4], 10) : 0,
+    mi: m[5] ? parseInt(m[5], 10) : 0,
+  };
+}
+
 export function formatThaiDate(iso: string): string {
-  const d = new Date(iso);
-  const months = [
-    "ม.ค.", "ก.พ.", "มี.ค.", "เม.ย.", "พ.ค.", "มิ.ย.",
-    "ก.ค.", "ส.ค.", "ก.ย.", "ต.ค.", "พ.ย.", "ธ.ค.",
-  ];
-  return `${d.getDate()} ${months[d.getMonth()]} ${d.getFullYear() + 543}`;
+  const p = parseIsoParts(iso);
+  if (!p) return iso;
+  return `${p.d} ${THAI_MONTHS[p.mo - 1]} ${p.y + 543}`;
+}
+
+export function formatThaiDateTime(iso: string): string {
+  const p = parseIsoParts(iso);
+  if (!p) return iso;
+  const hh = String(p.h).padStart(2, "0");
+  const mi = String(p.mi).padStart(2, "0");
+  return `${p.d} ${THAI_MONTHS[p.mo - 1]} ${p.y + 543} · ${hh}:${mi}`;
 }
 
 export function formatShortDate(iso: string): string {

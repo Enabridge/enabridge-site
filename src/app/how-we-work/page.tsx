@@ -63,7 +63,7 @@ export default async function HowWeWorkPage() {
       {/* Training credentials */}
       <section className="border-b border-border bg-bg-surface">
         <div className="mx-auto max-w-7xl px-6 py-24 lg:px-12 lg:py-28">
-          <p className="text-xs font-medium tracking-[0.25em] text-premium uppercase">
+          <p className="eyebrow text-xs text-premium">
             {dict.howWeWork.training.label}
           </p>
           <h2 className="mt-4 text-3xl font-semibold tracking-tight text-text-primary sm:text-4xl">
@@ -89,7 +89,7 @@ export default async function HowWeWorkPage() {
       {/* Education philosophy */}
       <section className="border-b border-border">
         <div className="mx-auto max-w-7xl px-6 py-24 lg:px-12 lg:py-28">
-          <p className="text-xs font-medium tracking-[0.25em] text-premium uppercase">
+          <p className="eyebrow text-xs text-premium">
             {dict.howWeWork.approach.label}
           </p>
           <h2 className="mt-4 text-3xl font-semibold tracking-tight text-text-primary sm:text-4xl">

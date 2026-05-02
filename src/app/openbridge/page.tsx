@@ -28,7 +28,7 @@ export default async function OpenBridgePage() {
             </span>
             {ob.hero.badge}
           </div>
-          <h1 className="mt-8 max-w-3xl text-4xl font-semibold leading-[1.12] tracking-tight text-text-primary sm:text-5xl lg:text-[3.5rem]">
+          <h1 className="display-serif mt-8 max-w-3xl text-4xl leading-[1.1] text-text-primary sm:text-5xl lg:text-[3.5rem]">
             {ob.hero.title}
           </h1>
           <p className="mt-8 max-w-2xl text-lg leading-relaxed text-text-muted">
@@ -42,7 +42,7 @@ export default async function OpenBridgePage() {
               href={contactInfo.line.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center rounded-full bg-primary px-8 py-4 text-sm font-semibold text-accent shadow-lg shadow-primary/20 transition hover:bg-cta-hover hover:shadow-cta-hover/25"
+              className="inline-flex items-center justify-center rounded-lg bg-cta-bg px-8 py-3.5 text-sm font-semibold text-cta-fg shadow-md transition hover:bg-cta-hover"
             >
               {ob.hero.ctaPrimary}
             </a>
@@ -54,7 +54,7 @@ export default async function OpenBridgePage() {
       {/* Problem */}
       <section className="border-b border-border bg-bg-surface">
         <div className="mx-auto max-w-7xl px-6 py-24 lg:px-12 lg:py-28">
-          <p className="text-xs font-medium tracking-[0.25em] text-premium uppercase">
+          <p className="eyebrow text-xs text-premium">
             {ob.problem.label}
           </p>
           <h2 className="mt-5 max-w-3xl text-3xl font-semibold tracking-tight text-text-primary sm:text-4xl">
@@ -75,7 +75,7 @@ export default async function OpenBridgePage() {
       {/* Vision */}
       <section className="border-b border-border">
         <div className="mx-auto max-w-7xl px-6 py-24 lg:px-12 lg:py-28">
-          <p className="text-xs font-medium tracking-[0.25em] text-premium uppercase">
+          <p className="eyebrow text-xs text-premium">
             {ob.vision.label}
           </p>
           <h2 className="mt-5 max-w-3xl text-3xl font-semibold tracking-tight text-text-primary sm:text-4xl">
@@ -100,7 +100,7 @@ export default async function OpenBridgePage() {
       {/* Compound */}
       <section className="border-b border-border bg-bg-surface">
         <div className="mx-auto max-w-7xl px-6 py-24 lg:px-12 lg:py-28">
-          <p className="text-xs font-medium tracking-[0.25em] text-premium uppercase">
+          <p className="eyebrow text-xs text-premium">
             {ob.compound.label}
           </p>
           <h2 className="mt-5 max-w-3xl text-3xl font-semibold tracking-tight text-text-primary sm:text-4xl">
@@ -127,7 +127,7 @@ export default async function OpenBridgePage() {
       {/* Team */}
       <section className="border-b border-border">
         <div className="mx-auto max-w-7xl px-6 py-24 lg:px-12 lg:py-28">
-          <p className="text-xs font-medium tracking-[0.25em] text-premium uppercase">
+          <p className="eyebrow text-xs text-premium">
             {ob.team.label}
           </p>
           <h2 className="mt-5 max-w-3xl text-3xl font-semibold tracking-tight text-text-primary sm:text-4xl">
@@ -158,7 +158,7 @@ export default async function OpenBridgePage() {
       {/* Status */}
       <section className="border-b border-border bg-bg-surface">
         <div className="mx-auto max-w-7xl px-6 py-24 lg:px-12 lg:py-28">
-          <p className="text-xs font-medium tracking-[0.25em] text-premium uppercase">
+          <p className="eyebrow text-xs text-premium">
             {ob.status.label}
           </p>
           <h2 className="mt-5 max-w-3xl text-3xl font-semibold tracking-tight text-text-primary sm:text-4xl">
@@ -223,7 +223,7 @@ export default async function OpenBridgePage() {
       {/* Built by Enabridge */}
       <section className="border-b border-border">
         <div className="mx-auto max-w-7xl px-6 py-24 lg:px-12 lg:py-28">
-          <p className="text-xs font-medium tracking-[0.25em] text-premium uppercase">
+          <p className="eyebrow text-xs text-premium">
             {ob.builtBy.label}
           </p>
           <h2 className="mt-5 max-w-3xl text-3xl font-semibold tracking-tight text-text-primary sm:text-4xl">
@@ -238,13 +238,13 @@ export default async function OpenBridgePage() {
           <div className="mt-8 flex flex-wrap gap-4">
             <Link
               href="/case-studies"
-              className="inline-flex items-center justify-center rounded-full border border-accent/40 bg-white/5 px-6 py-3 text-sm font-semibold text-accent transition hover:border-accent/70 hover:bg-primary/15 hover:text-white"
+              className="inline-flex items-center justify-center rounded-lg border border-primary/40 bg-primary/5 px-6 py-3 text-sm font-semibold text-primary transition hover:border-primary hover:bg-primary hover:text-cta-fg"
             >
               {ob.builtBy.seeCaseStudies}
             </Link>
             <Link
               href="/company"
-              className="inline-flex items-center justify-center rounded-full border border-border px-6 py-3 text-sm font-medium text-text-muted transition hover:border-accent/50 hover:text-accent"
+              className="inline-flex items-center justify-center rounded-lg border border-border px-6 py-3 text-sm font-medium text-text-muted transition hover:border-primary hover:text-primary"
             >
               {ob.builtBy.meetFounder}
             </Link>
@@ -256,7 +256,7 @@ export default async function OpenBridgePage() {
       <section className="border-t border-border">
         <div className="mx-auto max-w-7xl px-6 py-24 lg:px-12 lg:py-28">
           <div className="rounded-2xl border border-border bg-bg-surface px-8 py-16 text-center sm:px-16">
-            <p className="text-xs font-medium tracking-[0.25em] text-premium uppercase">
+            <p className="eyebrow text-xs text-premium">
               {ob.finalCta.label}
             </p>
             <h2 className="mt-5 text-3xl font-semibold tracking-tight text-text-primary sm:text-4xl">
@@ -270,7 +270,7 @@ export default async function OpenBridgePage() {
                 href={contactInfo.line.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center rounded-full bg-primary px-8 py-4 text-sm font-semibold text-accent shadow-lg shadow-primary/20 transition hover:bg-cta-hover hover:shadow-cta-hover/25"
+                className="inline-flex items-center justify-center rounded-lg bg-cta-bg px-8 py-3.5 text-sm font-semibold text-cta-fg shadow-md transition hover:bg-cta-hover"
               >
                 {ob.finalCta.cta}
               </a>

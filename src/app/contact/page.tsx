@@ -31,10 +31,10 @@ export default async function ContactPage() {
               rel="noopener noreferrer"
               className="group rounded-xl border border-border bg-bg-surface p-10 text-center transition hover:border-accent/40 hover:bg-bg-elevated"
             >
-              <p className="text-xs font-medium tracking-[0.25em] text-premium uppercase">
+              <p className="eyebrow text-xs text-premium">
                 {dict.contact.lineLabel}
               </p>
-              <p className="mt-4 text-2xl font-semibold text-accent group-hover:text-white transition">
+              <p className="mt-4 text-2xl font-semibold text-primary group-hover:text-cta-hover transition">
                 {contactInfo.line.id}
               </p>
               <p className="mt-3 text-sm text-text-muted">
@@ -46,10 +46,10 @@ export default async function ContactPage() {
               href={contactInfo.phone.href}
               className="group rounded-xl border border-border bg-bg-surface p-10 text-center transition hover:border-accent/40 hover:bg-bg-elevated"
             >
-              <p className="text-xs font-medium tracking-[0.25em] text-premium uppercase">
+              <p className="eyebrow text-xs text-premium">
                 {dict.contact.phoneLabel}
               </p>
-              <p className="mt-4 text-2xl font-semibold text-accent group-hover:text-white transition">
+              <p className="mt-4 text-2xl font-semibold text-primary group-hover:text-cta-hover transition">
                 {contactInfo.phone.display}
               </p>
               <p className="mt-3 text-sm text-text-muted">
@@ -61,10 +61,10 @@ export default async function ContactPage() {
               href={contactInfo.email.href}
               className="group rounded-xl border border-border bg-bg-surface p-10 text-center transition hover:border-accent/40 hover:bg-bg-elevated"
             >
-              <p className="text-xs font-medium tracking-[0.25em] text-premium uppercase">
+              <p className="eyebrow text-xs text-premium">
                 {dict.contact.emailLabel}
               </p>
-              <p className="mt-4 text-2xl font-semibold text-accent group-hover:text-white transition">
+              <p className="mt-4 text-2xl font-semibold text-primary group-hover:text-cta-hover transition">
                 {contactInfo.email.display}
               </p>
               <p className="mt-3 text-sm text-text-muted">

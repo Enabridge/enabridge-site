@@ -49,7 +49,7 @@ export default async function CompanyPage() {
         <div className="mx-auto max-w-7xl px-6 py-24 lg:px-12 lg:py-28">
           <div className="grid gap-16 lg:grid-cols-2">
             <div>
-              <p className="text-xs font-medium tracking-[0.25em] text-premium uppercase">
+              <p className="eyebrow text-xs text-premium">
                 {dict.company.mission.label}
               </p>
               <h2 className="mt-4 text-3xl font-semibold tracking-tight text-text-primary sm:text-4xl">
@@ -63,7 +63,7 @@ export default async function CompanyPage() {
               </p>
             </div>
             <div>
-              <p className="text-xs font-medium tracking-[0.25em] text-premium uppercase">
+              <p className="eyebrow text-xs text-premium">
                 {dict.company.principles.label}
               </p>
               <h2 className="mt-4 text-3xl font-semibold tracking-tight text-text-primary sm:text-4xl">
@@ -88,7 +88,7 @@ export default async function CompanyPage() {
       {/* Founder */}
       <section className="border-b border-border bg-bg-surface">
         <div className="mx-auto max-w-7xl px-6 py-24 lg:px-12 lg:py-28">
-          <p className="text-xs font-medium tracking-[0.25em] text-premium uppercase">
+          <p className="eyebrow text-xs text-premium">
             {dict.company.founder.label}
           </p>
           <div className="mt-8 grid gap-12 lg:grid-cols-[320px_1fr] lg:gap-16">
@@ -160,7 +160,7 @@ export default async function CompanyPage() {
       {/* Capabilities */}
       <section className="border-b border-border">
         <div className="mx-auto max-w-7xl px-6 py-24 lg:px-12 lg:py-28">
-          <p className="text-xs font-medium tracking-[0.25em] text-premium uppercase">
+          <p className="eyebrow text-xs text-premium">
             {dict.company.capabilities.label}
           </p>
           <h2 className="mt-4 text-3xl font-semibold tracking-tight text-text-primary sm:text-4xl">
@@ -187,7 +187,7 @@ export default async function CompanyPage() {
       {/* Trust & Governance */}
       <section className="border-b border-border bg-bg-surface">
         <div className="mx-auto max-w-7xl px-6 py-24 lg:px-12 lg:py-28">
-          <p className="text-xs font-medium tracking-[0.25em] text-premium uppercase">
+          <p className="eyebrow text-xs text-premium">
             {dict.company.trust.label}
           </p>
           <h2 className="mt-4 text-3xl font-semibold tracking-tight text-text-primary sm:text-4xl">

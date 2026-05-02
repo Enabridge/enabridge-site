@@ -35,7 +35,7 @@ export default function LanguageToggle({
       onClick={handleClick}
       aria-label={ariaLabel}
       disabled={pending}
-      className="inline-flex items-center justify-center rounded-full border border-border px-3 py-1.5 text-xs font-semibold text-text-muted transition hover:border-accent/60 hover:text-accent disabled:opacity-60"
+      className="inline-flex h-8 min-w-[2rem] items-center justify-center rounded-md border border-border px-2.5 text-xs font-semibold text-text-muted transition hover:border-border-strong hover:text-text-primary disabled:opacity-60"
     >
       {switchToLabel}
     </button>
